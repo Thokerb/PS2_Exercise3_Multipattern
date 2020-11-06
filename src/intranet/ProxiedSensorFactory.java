@@ -1,6 +1,9 @@
 package intranet;
 
+import interfaces.IIntranetObserver;
 import interfaces.ObservableCelsiusSensor;
+import iot.ObservableSensorFactory;
+import iot.PlainTestSensorFactory;
 
 public class ProxiedSensorFactory {
 
@@ -11,46 +14,62 @@ public class ProxiedSensorFactory {
 	public static ProxiedSensorFactory getInstance() {
 		return otsf;
 	}
+	private ObservableSensorFactory observableSensorFactory = ObservableSensorFactory.getInstance();
 	
 	public static class ObservableCelsiusSensorProxy implements ObservableCelsiusSensor {
 
+		private ObservableCelsiusSensor proxiedSensor;
+
 		public ObservableCelsiusSensorProxy(ObservableCelsiusSensor proxiedSensor) {
-			// TODO Implement me
+			this.proxiedSensor = proxiedSensor;
 		}
 
 		@Override
 		public double getCurrentCelsius() {
-			// TODO Implement me
-			return 0;
+			return proxiedSensor.getCurrentCelsius();
 		}
 
 		@Override
 		public String getSensorId() {
-			// TODO Implement me
-			return null;
+			return proxiedSensor.getSensorId();
 		}
 
-		// TODO implement further required methods
-			
+		@Override
+		public void registerObserver(IIntranetObserver observer) {
+			proxiedSensor.registerObserver(observer);
+
+		}
+
+		@Override
+		public void unregisterObserver(IIntranetObserver observer) {
+			proxiedSensor.unregisterObserver(observer);
+
+		}
+
+		@Override
+		public void notifyObserver() {
+			proxiedSensor.notifyObserver();
+
+		}
+
 	}
 	
 
 	public ObservableCelsiusSensorProxy getHaermeleKopfBerg() {
-		// TODO Implement me
-		return null;
+
+		return new ObservableCelsiusSensorProxy(observableSensorFactory.getHaermeleKopfBerg());
 	}
 	public ObservableCelsiusSensorProxy getHaermeleKopfTal() {
-		// TODO Implement me
-		return null;
+		return new ObservableCelsiusSensorProxy(observableSensorFactory.getHaermeleKopfTal());
+
 	}
 	public ObservableCelsiusSensorProxy getRosshuetteTal() {
-		// TODO Implement me
-		return null;
+		return new ObservableCelsiusSensorProxy(observableSensorFactory.getRosshuetteTal());
+
 	}
 
 	public ObservableCelsiusSensor getReitherAlm() {
-		// TODO Implement me
-		return null;
+		return new ObservableCelsiusSensorProxy(observableSensorFactory.getReitherAlm());
 	}
 
 
