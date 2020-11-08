@@ -36,13 +36,15 @@ public class ObservableSensorFactory {
 	}
 	
 	public ObservableCelsiusSensor getReitherAlm() {
-		// TODO Implement me with task 5
-		return null;
+		var data = tsf.getReitherAlm();
+		return new ObservableSensor(
+				new FahrenheitCelsiusAdapterSensor(data)
+		);
 	}
 
 
 	public List<ObservableCelsiusSensor> getAllSensors() {
-		return Arrays.asList(getHaermeleKopfBerg(), getHaermeleKopfTal(), getRosshuetteTal()/*, getReitherAlm()*/);
+		return Arrays.asList(getHaermeleKopfBerg(), getHaermeleKopfTal(), getRosshuetteTal(), getReitherAlm());
 	}
 
 

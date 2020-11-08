@@ -87,8 +87,6 @@ public class PlainTestSensorFactory {
 		
 
 	}
-	
-	
 	/**
 	 * just wraps a Celsius-Sensor and returns the Fahrenheit :-)
 	 * @author Michael Breu
