@@ -9,20 +9,17 @@ public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		/*
-		 * 
-		 * mögliche Implementierung
+		//mögliche Implementierung
 		List<ObservableCelsiusSensor> allObservableSensors = ObservableSensorFactory.getInstance().getAllSensors();
 		
-		@SuppressWarnings("unused")
+		//@SuppressWarnings("unused")
 		Leitstand ls = new Leitstand(allObservableSensors);
 
-		@SuppressWarnings("unused")
+		//@SuppressWarnings("unused")
 		InternetSeite internet = new InternetSeite(allObservableSensors);
 		
 		Thread.sleep(20000L);
-		
-		*/
+
 		
 	}
 

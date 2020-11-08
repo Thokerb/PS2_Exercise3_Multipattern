@@ -3,6 +3,7 @@ package iot;
 import java.util.Arrays;
 import java.util.List;
 
+import interfaces.CelsiusSensor;
 import interfaces.ObservableCelsiusSensor;
 
 public class ObservableSensorFactory {
@@ -22,16 +23,16 @@ public class ObservableSensorFactory {
 	
 
 	public ObservableCelsiusSensor getHaermeleKopfBerg() {
-		// TODO Implement me
-		return null;
+		CelsiusSensor data = tsf.getHaermeleKopfBerg();
+		return new ObservableSensor(data);
 	}
 	public ObservableCelsiusSensor getHaermeleKopfTal() {
-		// TODO Implement me
-		return null;
+		CelsiusSensor data = tsf.getHaermeleKopfTal();
+		return new ObservableSensor(data);
 	}
 	public ObservableCelsiusSensor getRosshuetteTal() {
-		// TODO Implement me
-		return null;
+		CelsiusSensor data = tsf.getRosshuetteTal();
+		return new ObservableSensor(data);
 	}
 	
 	public ObservableCelsiusSensor getReitherAlm() {
@@ -41,7 +42,7 @@ public class ObservableSensorFactory {
 
 
 	public List<ObservableCelsiusSensor> getAllSensors() {
-		return Arrays.asList(getHaermeleKopfBerg(), getHaermeleKopfTal(), getRosshuetteTal(), getReitherAlm());
+		return Arrays.asList(getHaermeleKopfBerg(), getHaermeleKopfTal(), getRosshuetteTal()/*, getReitherAlm()*/);
 	}
 
 
